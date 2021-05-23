@@ -19,7 +19,8 @@ export default class Display extends React.Component {
       multipleYaxis: false,
       logarithmic: false,
       onChange: false,
-      data: []
+      data: [],
+      colors: ["#008ffb", "#02c787", "#feb019"]
     };
   }
 
@@ -69,11 +70,11 @@ export default class Display extends React.Component {
       .then(res => res.json())
       .then(result => {
         this.setState({ data: result })
-        this.configureChart(result, this.state.multipleYaxis, this.state.logarithmic)
+        this.configureChart(result, this.state.multipleYaxis, this.state.logarithmic, this.state.colors)
       });
   }
 
-  configureChart(data, multipleYaxis, logarithmic) {
+  configureChart(data, multipleYaxis, logarithmic, colors) {
     if (data.length > 0) {
       let series = [];
       let yAxis = [];
@@ -98,7 +99,7 @@ export default class Display extends React.Component {
             decimalsInFloat: 2,
             logarithmic: logarithmic,
             title: {
-              text: data.length > 2 ? undefined: data[i].name
+              text: data.length > 2 ? undefined : data[i].name
             },
           }
         }
@@ -130,12 +131,23 @@ export default class Display extends React.Component {
             position: "top",
           },
           yaxis: yAxis,
+          colors: colors
         },
         series: series,
         drawChart: true
       });
     }
   }
+  onColorChange(e, index) {
+    let colors = this.state.colors;
+    colors[index] = e.currentTarget.value;
+    this.setState({ colors: colors });
+  }
+  
+  updateChartColor() {
+    this.configureChart(this.state.data, this.state.multipleYaxis, this.state.logarithmic, this.state.colors)
+  }
+
   render() {
     return (
       <div className="display">
@@ -145,19 +157,19 @@ export default class Display extends React.Component {
               <label>Dimension</label>
             </Col>
             <Col md={10}>
-            <div className="input">
-              <DropTarget targetKey="input" onHit={(e) => this.dragged(e, 'dimension')} >
-                <div>
-                  {
-                    this.state.dimension && <div className="column display-input" key={this.state.dimension.name}>{this.state.dimension.name}</div>
-                  }
-                </div>
-              </DropTarget>
-              <button onClick={() => this.clear("dimension")}>Clear</button>
-            </div>
+              <div className="input">
+                <DropTarget targetKey="input" onHit={(e) => this.dragged(e, 'dimension')} >
+                  <div>
+                    {
+                      this.state.dimension && <div className="column display-input" key={this.state.dimension.name}>{this.state.dimension.name}</div>
+                    }
+                  </div>
+                </DropTarget>
+                <button onClick={() => this.clear("dimension")}>Clear</button>
+              </div>
             </Col>
           </Row>
-        
+
           <Row>
             <Col md={2}>
               <label>Measure</label>
@@ -169,8 +181,9 @@ export default class Display extends React.Component {
                     {
                       this.state.measures.length > 0 &&
 
-                      this.state.measures.map((measure) =>
-                        <div className="column display-input" key={measure.name}>{measure.name}</div>
+                      this.state.measures.map((measure, index) =>
+                        <div className="column display-input" key={measure.name}>{measure.name}
+                          <input type="color" value={this.state.colors[index]} onBlur={() => this.updateChartColor()} onChange={(e) => this.onColorChange(e, index)}></input></div>
                       )
 
                     }
@@ -189,7 +202,7 @@ export default class Display extends React.Component {
               <Col md={2}><label>
                 <input type="checkbox" onChange={(e) => {
                   this.setState({ multipleYaxis: e.currentTarget.checked })
-                  this.configureChart(this.state.data, e.currentTarget.checked, this.state.logarithmic)
+                  this.configureChart(this.state.data, e.currentTarget.checked, this.state.logarithmic, this.state.colors)
                 }}></input>
                 <div className="slider"></div>
               </label>
@@ -200,7 +213,7 @@ export default class Display extends React.Component {
               <Col md={2}><label>
                 <input type="checkbox" onChange={(e) => {
                   this.setState({ logarithmic: e.currentTarget.checked })
-                  this.configureChart(this.state.data, this.state.multipleYaxis, e.currentTarget.checked)
+                  this.configureChart(this.state.data, this.state.multipleYaxis, e.currentTarget.checked, this.state.colors)
                 }}></input>
                 <div className="slider"></div>
               </label>

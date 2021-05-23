@@ -75,6 +75,17 @@
     
   }
 
+  input[type=color]{
+    float: right;
+    padding: 0;
+    margin: 2%;
+    background: #ccc;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+  }
+  
+
   input[type=checkbox]{
 	height: 0;
 	width: 0;
