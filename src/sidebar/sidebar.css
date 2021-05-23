@@ -1,0 +1,25 @@
+.leftSidebar {
+    width: 60%;
+    border-right: 3px solid  #f4b22b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-area: leftSidebar;
+    padding: 10px 0px;
+  }
+  h5{
+    margin: 10px;
+  }
+  h4{
+    width: 100%;
+    border-radius: 10px;
+    border-bottom: 1px solid  #f4b22b;
+    padding: 10px;
+    text-align: center;
+  }
+  hr {
+    width: -webkit-fill-available;
+    border-bottom: 1px solid ;
+    
+  }

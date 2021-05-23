@@ -1,0 +1,57 @@
+.App {
+  background-image: radial-gradient(farthest-side ellipse at 10% 0, #154265 20%, #041219);
+  height: 100vh;
+  color:#fff;
+  display: grid;
+  grid-template-rows: 10% 85% 5%;
+  grid-template-columns: 20% 60% 20% ;
+  grid-template-areas: 
+    "header header header"
+    "leftSidebar main main"
+    "footer footer footer";
+}
+.header-container{
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.body-container{
+  background: transparent;
+  grid-area: body;
+}
+
+.footer-container{
+  grid-area: footer;
+}
+
+.light-blue{
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-end;
+  height: 30px;
+  background: #1f5f8f;
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  color: #f4b22b;
+  font-family: Ubuntu,sans-serif;
+ 
+}
+
+.column {
+  text-align: center;
+  width: 100px ;
+  height: 40px;
+  border: 1px solid #ccc ;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+
+
