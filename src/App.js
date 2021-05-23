@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import Sidebar from './sidebar/sidebar'; 
+import Sidebar from './sidebar/sidebar';
 import Display from './display/display';
 export default function App() {
 
@@ -10,13 +10,10 @@ export default function App() {
         <h1 className="title">Plotter</h1>
         <div className="light-blue"></div>
       </div>
-      {/* <div className="body-container"> */}
-    
-         <Sidebar/>
-         <Display/>
-      {/* </div> */}
+      <Sidebar />
+      <Display />
       <div className="footer-container">
-        <div className="light-blue"> 
+        <div className="light-blue">
           <p>Plotter App developed by Rasha Eldebeeky</p>
         </div>
       </div>

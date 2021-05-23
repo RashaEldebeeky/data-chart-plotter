@@ -4,10 +4,9 @@
     grid-area: main;
     display: grid;
     grid-template-columns:  75% 5% 20% ;
-    grid-template-rows: 20% 10% 10% 60%;
+    grid-template-rows: 30% 10% 60%;
     grid-template-areas: 
-    " input1  . rightSidebar"
-    " input2  . rightSidebar" 
+    " input  . rightSidebar" 
     " . . ." 
     " chart chart . "
   }
@@ -20,27 +19,19 @@
       display: flex;
       flex-direction: column;
   }
+  .chart-input{
+    grid-area: input;
+    align-self: center;
+  }
+  
+  .row {
+    align-items: center;
+  }
+
  .options {
     padding: 10px;
  }
 
-  .dimension-input {
-    grid-area: input1;
-    align-items: center;
-    display: grid;
-    grid-template-columns: 10% 90%  ;
-    grid-template-areas: 
-    "label input"
-  }
-  .measure-input {
-    grid-area: input2;
-    display: flex;
-    align-items: center;
-    display: grid;
-    grid-template-columns: 10% 90%  ;
-    grid-template-areas: 
-    "label input"
-  }
   .chart-container{
     grid-area: chart;
     display: flex;
@@ -121,4 +112,8 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(20px);
+}
+
+.display-input{
+  width:30%
 }
