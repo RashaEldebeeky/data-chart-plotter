@@ -158,7 +158,7 @@ export default class Display extends React.Component {
             </Col>
             <Col md={10}>
               <div className="input">
-                <DropTarget targetKey="input" onHit={(e) => this.dragged(e, 'dimension')} >
+                <DropTarget targetKey="dimensionInput" onHit={(e) => this.dragged(e, 'dimension')} >
                   <div>
                     {
                       this.state.dimension && <div className="column display-input" key={this.state.dimension.name}>{this.state.dimension.name}</div>
@@ -176,7 +176,7 @@ export default class Display extends React.Component {
             </Col>
             <Col md={10}>
               <div className="input">
-                <DropTarget targetKey="input" onHit={(e) => this.dragged(e, 'measure')} >
+                <DropTarget targetKey="measuresInput" onHit={(e) => this.dragged(e, 'measure')} >
                   <div className="dropTarget">
                     {
                       this.state.measures.length > 0 &&

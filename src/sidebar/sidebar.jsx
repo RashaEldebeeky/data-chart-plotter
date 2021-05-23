@@ -41,7 +41,7 @@ export default class Sidebar extends React.Component {
         <div id="dimension">
           { 
             this.state.columnsDimension.map((col) =>
-              <Draggable targetKey="input" column={col} key={col.name + col.function} />
+              <Draggable targetKey="dimensionInput" column={col} key={col.name + col.function} />
             )
           }
         </div>
@@ -49,7 +49,7 @@ export default class Sidebar extends React.Component {
         <div id="measure">
           {
             this.state.columnsMeasure.map((col) =>
-              <Draggable targetKey="input" column={col} key={col.name + col.function} />
+              <Draggable targetKey="measuresInput" column={col} key={col.name + col.function} />
             )
           }
         </div>
